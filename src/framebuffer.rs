@@ -25,13 +25,15 @@ impl Framebuffer {
 
     pub fn set_pixel(&mut self, x: usize, y: usize, color: u32) {
         if x < self.width && y < self.height {
-            self.buffer[y * self.width + x] = color;
+            let inverted_y = self.height - 1 - y; // Invertir la coordenada y
+            self.buffer[inverted_y * self.width + x] = color;
         }
     }
 
     pub fn get_pixel(&self, x: usize, y: usize) -> u32 {
         if x < self.width && y < self.height {
-            self.buffer[y * self.width + x]
+            let inverted_y = self.height - 1 - y; // Invertir la coordenada y
+            self.buffer[inverted_y * self.width + x]
         } else {
             self.background_color
         }

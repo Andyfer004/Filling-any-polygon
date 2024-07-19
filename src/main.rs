@@ -50,6 +50,33 @@ fn main() -> std::io::Result<()> {
         0xFF0000  // Color de relleno (rojo)
     );
 
+    // Definir los puntos del Polígono 4
+    let polygon4_points = vec![
+        (413, 177), (448, 159), (502, 88), (553, 53), (535, 36),
+        (676, 37), (660, 52), (750, 145), (761, 179), (672, 192),
+        (659, 214), (615, 214), (632, 230), (580, 230), (597, 215),
+        (552, 214), (517, 144), (466, 180)
+    ];
+
+    // Dibujar el Polígono 4 (verde con orilla blanca)
+    framebuffer.draw_polygon(
+        &polygon4_points, 
+        0xFFFFFF, // Color de la orilla (blanco)
+        0x00FF00  // Color de relleno (verde)
+    );
+
+    // Definir los puntos del Polígono 5 (Agujero dentro del Polígono 4)
+    let polygon5_points = vec![
+        (682, 175), (708, 120), (735, 148), (739, 170)
+    ];
+
+    // Dibujar el Polígono 5 (agujero negro)
+    framebuffer.draw_polygon(
+        &polygon5_points, 
+        0xFFFFFF, // Color de la orilla (blanco)
+        0x000000  // Color de relleno (negro)
+    );
+
     // Guardar el framebuffer como un archivo BMP
     framebuffer.render_buffer("out.bmp")?;
 

@@ -38,6 +38,18 @@ fn main() -> std::io::Result<()> {
         0x0000FF  // Color de relleno (azul)
     );
 
+    // Definir los puntos del Polígono 3
+    let polygon3_points = vec![
+        (377, 249), (411, 197), (436, 249)
+    ];
+
+    // Dibujar el Polígono 3 (rojo con orilla blanca)
+    framebuffer.draw_polygon(
+        &polygon3_points, 
+        0xFFFFFF, // Color de la orilla (blanco)
+        0xFF0000  // Color de relleno (rojo)
+    );
+
     // Guardar el framebuffer como un archivo BMP
     framebuffer.render_buffer("out.bmp")?;
 
